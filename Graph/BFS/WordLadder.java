@@ -27,7 +27,7 @@ public class WordLadder {
         while(!queue.isEmpty()) {
             var wordLadder = queue.poll();
             if(endWord.equals(wordLadder.word())) return wordLadder.level();
-            int len = wordLadder.word().length();
+            final int len = wordLadder.word().length();
             for(int i = 0; i < len; i++) {
                 var charArr = wordLadder.word().toCharArray();
                 for(char ch = 'a'; ch <= 'z'; ch++) {

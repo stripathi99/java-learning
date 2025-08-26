@@ -1,5 +1,7 @@
 package SlidingWindow;
 
+import util.GenerateNRandomIntArrUtil;
+
 import java.util.ArrayDeque;
 import java.util.Arrays;
 
@@ -13,8 +15,8 @@ public class SlidingWindowMaximum {
         arr = GenerateNRandomIntArrUtil.generateRandomArray(N, MIN_RANGE, MAX_RANGE);
         System.out.println("Generated random numbers.");
         var startTime = System.currentTimeMillis();
-        //bruteForceApproach();
-        optimizedApproachUsingDeque();
+        bruteForceApproach();
+        //optimizedApproachUsingDeque();
         var endTime = System.currentTimeMillis();
         System.out.printf("It took %dms to execute.\n", endTime - startTime);
     }

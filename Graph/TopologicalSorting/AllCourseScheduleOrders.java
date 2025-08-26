@@ -9,7 +9,7 @@ public class AllCourseScheduleOrders {
     public static void main(String[] args) {
 
         final var courses = new int[][] {
-                {2,5}, {0,5}, {0, 4},
+                {2, 5}, {0, 5}, {0, 4},
                 {1, 4}, {3, 2}, {1, 3}
         };
 

@@ -1,5 +1,7 @@
 package SlidingWindow;
 
+import util.GenerateNRandomIntArrUtil;
+
 import java.util.Arrays;
 
 public class MaxSumSubArray {

@@ -5,10 +5,10 @@ import java.util.List;
 
 public class GenerateValidParenthesis {
     public static void main(String[] args) {
-        final var testCases = List.of(1, 2, 3);
+        final var testCases = List.of(1, 2, 3, 4, 5);
         for (final var testCase: testCases) {
-            System.out.printf("Generating valid parenthesis of length %d\n", testCase);
             var res = generateValidParenthesis(testCase);
+            System.out.printf("Generated %d valid parenthesis for test-case: %d\n", res.size(), testCase);
             res.forEach(System.out::println);
         }
     }

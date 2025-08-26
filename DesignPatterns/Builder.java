@@ -1,13 +1,14 @@
 package DesignPatterns;
 
+import java.time.LocalDate;
+
 public class Builder {
     public static void main(String[] args) {
-        Employee employee = new Employee.EmployeeBuilder()
-                .withAge(33)
-                .withName("Shubham Tripathi")
-                .withUserName("coolshubh4")
-                .withAddress("jk")
-                .withDateOfBirth("909090")
+        Employee employee = Employee.builder()
+                .withAge(29)
+                .withName("Samael Smith")
+                .withUserName("sam@1234")
+                .withAddress("NYC, New York")
                 .build();
         System.out.printf("Employee obj: %s", employee);
     }
@@ -28,12 +29,16 @@ class Employee {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public static EmployeeBuilder builder() {
+        return new EmployeeBuilder();
+    }
+
     public static class EmployeeBuilder {
         private static final String DEFAULT_NAME = "Default Name";
         private static final String DEFAULT_USERNAME = "default-user-name";
         private static final String DEFAULT_ADDRESS = "127.0.0.1";
         private static final int DEFAULT_AGE = 35;
-        private static final String DEFAULT_DOB = "04-04-1990";
+        private static final String DEFAULT_DOB = LocalDate.now().toString();
 
         private String name;
         private String userName;

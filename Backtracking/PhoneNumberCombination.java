@@ -17,12 +17,12 @@ public class PhoneNumberCombination {
             0, " ");
 
     public static void main(String[] args) {
-        final var input = "78989";
+        final var input = "6268";
         var res = new ArrayList<String>();
         System.out.printf("Generating char combinations for input digit: %s\n", input);
         backtrack(res, input, new StringBuilder(), input.length(), 0);
         System.out.printf("Total number of combinations: %d\n", res.size());
-        //res.forEach(System.out::println);
+        res.forEach(System.out::println);
     }
 
     private static void backtrack(List<String> list, String str, StringBuilder sb, int n, int idx) {
