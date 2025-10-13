@@ -1,11 +1,13 @@
 package Backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GenerateValidParenthesis {
     public static void main(String[] args) {
-        final var testCases = List.of(1, 2, 3, 4, 5);
+        final var testCases = Arrays.asList(-1, 0, 1, 2, 3, 4, 5, 10, null);
         for (final var testCase: testCases) {
             var res = generateValidParenthesis(testCase);
             System.out.printf("Generated %d valid parenthesis for test-case: %d\n", res.size(), testCase);
@@ -13,7 +15,8 @@ public class GenerateValidParenthesis {
         }
     }
 
-    private static List<String> generateValidParenthesis(int n) {
+    private static List<String> generateValidParenthesis(Integer n) {
+        if (n == null || n <= 0 || n > 10) return Collections.emptyList();
         var listOfValidParenthesis = new ArrayList<String>();
         backtrack(listOfValidParenthesis, new StringBuilder(), 0, 0, n);
         return listOfValidParenthesis;

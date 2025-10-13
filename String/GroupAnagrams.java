@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GroupAnagrams {
     public static void main(String[] args) {
@@ -63,19 +64,40 @@ public class GroupAnagrams {
                 "abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqponmlkjihgfedcba"
         );
 
-        GroupAnagrams anagrams = new GroupAnagrams();
-        var res = anagrams.groupAnagrams(wordList);
-        System.out.println(res);
+        System.out.println(groupAnagrams(wordList));
+        System.out.println(groupAnagramsUsingStreams(wordList));
     }
 
-    private List<List<String>> groupAnagrams(final List<String> words) {
+    private static List<List<String>> groupAnagrams(final List<String> words) {
         var map = new HashMap<String, List<String>>();
         for(var s: words) {
-            var ch = s.toCharArray();
-            Arrays.sort(ch);
-            var key = String.valueOf(ch);
-            map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+            if (s.isEmpty()) continue;
+            map.computeIfAbsent(wordSortUtil(s), k -> new ArrayList<>()).add(s);
         }
         return new ArrayList<>(map.values());
+    }
+
+    private static List<List<String>> groupAnagramsUsingStreams(final List<String> words) {
+        return words.stream()
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.groupingBy(GroupAnagrams::wordSortUtil))
+//                .collect(
+//                        Collectors.toMap(
+//                                GroupAnagrams::wordSortUtil,
+//                                word -> new ArrayList<String>(),
+//                                (list1, list2) -> {
+//                                    list1.addAll(list2);
+//                                    return list1;
+//                                }
+//                        )
+//                )
+                .values().stream()
+                .toList();
+    }
+
+    private static String wordSortUtil(final String word) {
+        char[] ch = word.strip().toCharArray();
+        Arrays.sort(ch);
+        return String.valueOf(ch);
     }
 }

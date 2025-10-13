@@ -14,20 +14,12 @@ public class Builder {
     }
 }
 
-class Employee {
-    private final String name;
-    private final String userName;
-    private final String address;
-    private final int age;
-    private final String dateOfBirth;
-
-    private Employee(String name, String userName, String address, int age, String dateOfBirth) {
-        this.name = name;
-        this.userName = userName;
-        this.address = address;
-        this.age = age;
-        this.dateOfBirth = dateOfBirth;
-    }
+record Employee(
+        String name,
+        String userName,
+        String address,
+        int age,
+        String dateOfBirth) {
 
     public static EmployeeBuilder builder() {
         return new EmployeeBuilder();

@@ -34,7 +34,7 @@ public class Employee {
                         .thenComparing(EmployeeRecord::name))
                 .toList();
 
-        System.out.println(filteredEmployees);
+        filteredEmployees.forEach(System.out::println);
     }
 
     static Predicate<EmployeeRecord> salGreaterThan250 = e -> e.salary() > 250_000;

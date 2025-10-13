@@ -12,11 +12,10 @@ class SingleLinkedList {
 
         if (head == null) {
             head = newNode;
-            tail = newNode;
         } else {
             tail.next = newNode;
-            tail = newNode;
         }
+        tail = newNode;
     }
 
     public Node getHead() {

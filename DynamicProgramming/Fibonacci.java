@@ -2,13 +2,13 @@ package DynamicProgramming;
 
 public class Fibonacci {
     public static void main(String[] args) throws InterruptedException {
-        final int fib = 55;
-//        Thread t1 = Thread.ofPlatform().start(() -> {
-//            var start = System.currentTimeMillis();
-//            System.out.printf("\nBF - fib(%d) = %d\n", fib, calculateFibonacci(fib));
-//            var end = System.currentTimeMillis();
-//            System.out.printf("It took %dms to compute.\n", end - start);
-//        });
+        final int fib = 50;
+        Thread t1 = Thread.ofPlatform().start(() -> {
+            var start = System.currentTimeMillis();
+            System.out.printf("\nBF - fib(%d) = %d\n", fib, calculateFibonacci(fib));
+            var end = System.currentTimeMillis();
+            System.out.printf("It took %dms to compute.\n", end - start);
+        });
 
         Thread t2 = Thread.ofPlatform().start(() -> {
             var start = System.currentTimeMillis();
@@ -24,7 +24,7 @@ public class Fibonacci {
             System.out.printf("It took %dms to compute.\n", end - start);
         });
 
-//        t1.join();
+        t1.join();
         t2.join();
         t3.join();
     }

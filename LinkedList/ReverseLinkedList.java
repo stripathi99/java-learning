@@ -11,8 +11,8 @@ public class ReverseLinkedList {
         IntStream.range(0, 10).forEach(sList::addNode);
         Node curr = sList.getHead();
         display(curr);
-        //display(reverseLL(curr));
-        display(reverseUsingStack(curr));
+        display(reverseLL(curr));
+        //display(reverseUsingStack(curr));
     }
 
     private static Node reverseLL(final Node node) {

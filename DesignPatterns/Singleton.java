@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Singleton {
-    private final static int MAX_CAPACITY = 1000;
+    private final static int MAX_CAPACITY = 10_000;
     public static void main(String[] args) throws InterruptedException {
         List<Thread> threads = new ArrayList<>(MAX_CAPACITY);
 
