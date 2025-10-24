@@ -28,7 +28,7 @@ public class LoopUnrolling {
         }
         end = System.nanoTime();
         duration = (end - start) / 1_000_000;
-        System.out.println("Sum: " + sum +". It took " + duration + "ms.");
+        System.out.printf("Sum: %d. It took %dms.\n", sum, duration);
     }
 
     private static void init() {
