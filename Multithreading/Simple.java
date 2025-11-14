@@ -5,24 +5,22 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.LongStream;
 
 public class Simple {
     private final static int RANGE = 2_000_000_000, STEP = 2_0000_000;
 
-    // private final static int NUM_OF_THREADS =
-    // Runtime.getRuntime().availableProcessors();
     public static void main(String[] args) {
-        var startTime = System.currentTimeMillis();
+        var startTime = System.nanoTime();
         System.out.println(LongStream.range(1, RANGE + 1).sum());
-        var endTime = System.currentTimeMillis();
-        System.out.printf("it took %dms to execute.\n", endTime - startTime);
+        System.out.printf("it took %d ms to execute.\n", TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime));
 
         List<Future<Long>> futures;
         //try (var executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())) {
         try (var executorService = Executors.newVirtualThreadPerTaskExecutor()) {
             futures = new ArrayList<>(RANGE / STEP);
-            startTime = System.currentTimeMillis();
+            startTime = System.nanoTime();
 
             for (int i = 0; i <= RANGE - STEP; i += STEP) {
                 int start = i + 1, end = i + STEP;
@@ -43,8 +41,7 @@ public class Simple {
             }
         }).sum();
 
-        endTime = System.currentTimeMillis();
         System.out.println(sum);
-        System.out.printf("it took %dms to execute.\n", endTime - startTime);
+        System.out.printf("it took %d ms to execute.\n", TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime));
     }
 }

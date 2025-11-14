@@ -9,7 +9,7 @@ public class ThreadLimitTest {
         try {
             while(true) {
                 var thread = new Thread(() -> {
-                   threadCount.incrementAndGet();
+                    threadCount.incrementAndGet();
                     LockSupport.park();
                 });
                 thread.start();
@@ -18,7 +18,6 @@ public class ThreadLimitTest {
             System.out.println("Reached thread limit: " + threadCount);
             outOfMemoryError.printStackTrace();
         } finally {
-            Runtime.getRuntime().gc();
             Runtime.getRuntime().exit(0);
         }
     }
